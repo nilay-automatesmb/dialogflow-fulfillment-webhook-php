@@ -12,6 +12,9 @@ class Suggestion extends RichMessage
 
     /** @var array */
     protected $replies = [];
+	
+	/** @var string */
+    protected $title;
 
     /**
      * Create a new Suggestion instance.
@@ -31,6 +34,17 @@ class Suggestion extends RichMessage
         return $suggestion;
     }
 
+	/**
+     * Set the title for a Card.
+     *
+     * @param string $title
+     */
+    public function title($title)
+    {
+        $this->title = $title;
+        return $this;
+    }
+	
     /**
      * Set the reply for a Suggestion.
      *
@@ -103,6 +117,7 @@ class Suggestion extends RichMessage
         } else {
             $out = [
                 'quickReplies' => [
+					'title'    	  => $this->title, 
                     'quickReplies' => $this->replies,
                 ],
             ];
